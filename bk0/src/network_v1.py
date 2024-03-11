@@ -25,7 +25,8 @@ class Network:
         """feedforward, return output for layer, where a is output of previous layer"""
         for b, w in zip(self.biases, self.weights):
             a = sigmoid(np.dot(w, a)+b)
-        
+        return a
+
     def SGD(self, train_data, epochs, batch_size, eta, test_data=None):
         """
         SGD - stochastic gradient descent

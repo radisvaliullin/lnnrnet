@@ -58,7 +58,7 @@ def mnist_decode():
     # 50k as train data
     train_data = (img_60k[0:NUM_IMAGES_50K], lb_60k[0:NUM_IMAGES_50K])
     # 10k as valid data
-    valid_data = (img_60k[NUM_IMAGES_50K:], lb_60k[0:NUM_IMAGES_50K])
+    valid_data = (img_60k[NUM_IMAGES_50K:], lb_60k[NUM_IMAGES_50K:])
     # test data
     test_data = (img_10k, lb_10k)
 
