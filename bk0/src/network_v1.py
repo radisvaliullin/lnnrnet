@@ -2,6 +2,7 @@
 '''
 code from chapter 1 and 2
 fast matrix-based algorithm implementing stochastic gradient descent and backpropagation
+used cost function is quadratic cost function
 '''
 
 import numpy as np
