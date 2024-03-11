@@ -1,5 +1,8 @@
 # network_v1.py
-# code from chapter 1
+'''
+code from chapter 1
+fast matrix-based algorithm
+'''
 
 import numpy as np
 import random
