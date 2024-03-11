@@ -105,7 +105,7 @@ class Network:
                 eval_accur.append(accur)
                 print("accuracy on evaluation data: {} / {}".format(
                     self.accuracy(eval_data), n_eval))
-            print
+            print()
         return eval_cost, eval_accur, train_cost, train_accur
 
     def update_batch(self, batch, eta, lmbda, n):
