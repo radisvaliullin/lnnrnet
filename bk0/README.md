@@ -16,3 +16,10 @@ put downloaded files to:
 ```
 ./bk0/data
 ```
+
+## execute
+all python file executed from root folder\
+example:
+```
+python ./bk0/src/helper/mnist_decode_example.py
+```
