@@ -1,7 +1,7 @@
 # network_v1.py
 '''
-code from chapter 1
-fast matrix-based algorithm
+code from chapter 1 and 2
+fast matrix-based algorithm implementing stochastic gradient descent and backpropagation
 '''
 
 import numpy as np
@@ -59,13 +59,15 @@ class Network:
         """
         nabla_b = [np.zeros(b.shape) for b in self.biases]
         nabla_w = [np.zeros(w.shape) for w in self.weights]
+        # calculate delta and nabla for batch (see details of backprop)
         for x, y in batch:
             delta_nabla_b, delta_nabla_w = self.backprop(x, y)
             nabla_b = [nb+dnb for nb, dnb in zip(nabla_b, delta_nabla_b)]
             nabla_w = [nw+dnw for nw, dnw in zip(nabla_w, delta_nabla_w)]
+        # update weights and biases based on nabla_w and nabla_b
         self.weights = [w-(eta/len(batch))*nw for w, nw in zip(self.weights, nabla_w)]
         self.biases = [b-(eta/len(batch))*nb for b, nb in zip(self.biases, nabla_b)]
-    
+
     def backprop(self, x, y):
         """
         Calculates a value (nabla_b, nabla_w) the gradient for the cost function C_x.
@@ -87,10 +89,14 @@ class Network:
             activation = sigmoid(z)
             activations.append(activation)
         # backward pass
+        # delta - dC/dz is error of neuron output
+        # delta is vector (errors of neurons in layer)
         delta = self.cost_derivative(activations[-1], y) * sigmoid_prime(zs[-1])
+        # nabla b - dC/db
         nabla_b[-1] = delta
+        # nabla w - dC/dw
         nabla_w[-1] = np.dot(delta, activations[-2].transpose())
-        #
+        # calculate delta and nabla for each layer
         for l in range(2, self.num_layers):
             z = zs[-l]
             sp = sigmoid_prime(z)
