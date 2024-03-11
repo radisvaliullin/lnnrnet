@@ -1,6 +1,12 @@
 # temp folder
-/tmp/
+**/tmp/
+**/tmp.py
 
+# exclude data folders
 # bk0
 # data
 /bk0/data/
+
+# python excludes
+# python cache
+**/__pycache__/
